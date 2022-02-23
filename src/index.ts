@@ -6,27 +6,40 @@ type Context = BaseContext & {
     cwd: string;
 };
 
-class GreetCommand extends Command<Context> {
-    static paths = [[`greet`]];
-    public name: (string | undefined) = Option.String(`-n,--name`);
+class CleanCommand extends Command<Context> {
+    static paths = [[`clean`]];
+    public cleanRoot: (string | undefined) = Option.String(`-p,--path`);
     public verbose: boolean = Option.Boolean(`-v,--verbose`, false, {description: `verbose parameter`});
 
     async execute() {
-        if (typeof this.name === `undefined`) {
-            this.context.stdout.write(`You're not registered.\n`);
+        if (typeof this.cleanRoot === `undefined`) {
+            this.context.stdout.write(`give a path plz\n`);
         } else {
-            this.context.stdout.write(`Hello, ${this.name}!\n`);
+            this.context.stdout.write(`start clean ${this.cleanRoot}...\n`);
+            this.doClean(this.cleanRoot ?? '.')
         }
+    }
+
+    /**
+     * @description
+     * @author xujx
+     * @date 2022-02-23
+     * @private
+     * @param {string} path
+     * @memberof CleanCommand
+     */
+    private async doClean(path:string){
+        
     }
 };
 
 const cli = new Cli<Context>({
-    binaryLabel: `Clipanion Test`,
-    binaryName: `clipanion`,
+    binaryLabel: `clean my node`,
+    binaryName: `cmn`,
     binaryVersion: `1.0.0`,
 });
 
-cli.register(GreetCommand);
+cli.register(CleanCommand);
 
 cli.runExit(process.argv.slice(2), {
     stdin: process.stdin,

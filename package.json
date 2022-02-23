@@ -1,27 +1,27 @@
 {
-  "name": "clipanion-test",
+  "name": "clean-my-node",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
   "bin": {
-    "clipanion": "lib/index.js"
+    "cmn": "lib/index.js"
   },
   "scripts": {
     "prepack": "rm -rf lib && tsc",
     "test": "ts-node src/index.ts",
-    "esno": "esno src/index.ts greet --name=mike"
+    "esno": "esno src/index.ts clean --path=./path"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/i5ting/clipanion-test.git"
+    "url": "git+https://github.com/Alfxjx/cleanMyNode.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/i5ting/clipanion-test/issues"
+    "url": "https://github.com/Alfxjx/cleanMyNode/issues"
   },
-  "homepage": "https://github.com/i5ting/clipanion-test#readme",
+  "homepage": "https://github.com/Alfxjx/cleanMyNode#readme",
   "devDependencies": {
     "@types/node": "^12.6.2",
     "debug": "^4.1.1",
@@ -36,7 +36,8 @@
     "!/lib/demos/**/*"
   ],
   "dependencies": {
-    "clipanion": "^3.2.0-rc.3",
-    "esno": "^0.10.1"
+    "clipanion": "^3.2.0-rc.9",
+    "esno": "^0.10.1",
+    "rimraf": "^3.0.2"
   }
 }
